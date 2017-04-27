@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<p>
+	<strong>Name</strong>
+	<%= @city.name %>
+</p>
+<p>
+	<strong>Total Employees</strong>
+	<%= @city.employees.count %>
+</p>
+<ol>
+<table>
+  <thead>
+    <tr>
+    <th>Sr.no</th>
+    <th>Name</th>
+    <th>Manager's name</th>
+    <th>Manager's city</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <% @city.employees.each do |employee| %>
+      <tr>
+        <td><li></li></td>
+        <td><%= employee.name %></td>
+        <td><%= employee.manager.present? ? employee.manager.name : ""%></td>
+        <td><%= employee.manager.city.present? ? employee.manager.city.name : ""%></td>
+        <td><%= link_to 'Show', employee %></td>
+        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</ol>
+
+<%= link_to 'Edit', edit_city_path(@city) %> |
+<%= link_to 'Back', cities_path %>

@@ -1,0 +1,24 @@
+<h1>Employees</h1>
+<p>Relocation Count= <%=Employee.where(willingtorelocate: true).count %></p>
+ <ol>
+  <table>
+  <thead>
+    <tr>
+    <th>Sr.no</th>
+    <th>Name</th>
+    <th>City</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+   <%Employee.where(willingtorelocate: true).each do |employee|%>
+      <tr>
+      <td><li></li></td>
+      <td><%= link_to employee.name ,edit_employee_path(employee)%></td>
+      <td><%= employee.city.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</ol>
